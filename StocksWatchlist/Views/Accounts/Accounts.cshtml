@@ -1,0 +1,17 @@
+﻿@model List<StocksWatchlist.Models.MutualFund>
+@{
+    ViewBag.Title = "My Portfolios";
+}
+
+<h2>Retirement Accounts Sector Mutual Funds</h2>
+
+@foreach (var fund in Model)
+{
+    <h3>@Html.ActionLink(fund.Sector, "Detail", new { id=fund.Ticker })</h3>
+    <h4>#@fund.StockExchange - @fund.Price</h4>
+
+    var investors = fund.Investors.Select(i => i.InvestorName).ToArray();
+    var investorsString = String.Join(", ", investors);
+    <p><strong>Sector Mutual Fund Retirement Investor: </strong> @investorsString</p>
+}
+

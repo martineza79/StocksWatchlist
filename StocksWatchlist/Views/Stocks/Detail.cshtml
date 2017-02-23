@@ -1,0 +1,22 @@
+﻿@model IEnumerable<StocksWatchlist.Models.MutualFund>
+
+@{ 
+    ViewBag.Title = "Detail";
+
+    string stockString = "";
+}
+
+<h2>Stocks on Sale!</h2>
+
+<div class="row">
+    @foreach (var product in Model)
+    {
+        //Html.RenderPartial("~/Views/Shared/_ProductDetails.cshtml", product);
+        stockString += Html.Partial("~/Views/Shared/_StockDetails.cshtml", product);
+    }
+
+
+    @Html.Raw(stockString)
+
+
+</div>
